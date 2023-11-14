@@ -1,4 +1,3 @@
-// Login.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -47,7 +46,7 @@ const Login = () => {
   const [error, setError] = useState('');
 
   const handleLogin = async () => {
-    // Add your authentication logic here (e.g., call a backend API)
+    // Add the authentication logic here (e.g., call a backend API)
     try {
       // Example: Assuming a fake login API that returns a token
       const response = await fetch('https://fake-login-api.com/login', {
@@ -63,7 +62,7 @@ const Login = () => {
         throw new Error(errorData.message || 'Login failed');
       }
 
-      // TODO: Handle successful login (e.g., store token in local storage)
+      // We have to do : Handle successful login (e.g., store token in local storage)
     } catch (error) {
       setError(error.message || 'Login failed');
     }
