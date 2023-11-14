@@ -1,4 +1,3 @@
-// Home.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -43,8 +42,8 @@ const helloCustomerStyle = {
 };
 
 const welcomeTextStyle = {
-  fontSize: '2.7em',  // Adjust the size based on your preference
-  margin: '10px 0', // Increased margin for spacing
+  fontSize: '2.7em',  
+  margin: '10px 0', 
 };
 
 const horizontalLineStyle = {
@@ -60,8 +59,8 @@ const buttonContainerStyle = {
 };
 
 const buttonStyle = {
-  fontSize: '1.5em', // Adjust the size based on your preference
-  margin: '0 15px', // Increased margin for spacing
+  fontSize: '1.5em', 
+  margin: '0 15px', 
 };
 
 export default Home;
