@@ -1,4 +1,3 @@
-// AdminDashboard.js
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,7 +18,6 @@ const AdminDashboard = () => {
   return (
     <div className={classes.root}>
       <Typography variant="h4">Admin Dashboard</Typography>
-      {/* Add your admin-specific content here */}
     </div>
   );
 };

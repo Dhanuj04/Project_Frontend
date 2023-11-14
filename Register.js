@@ -1,4 +1,3 @@
-// Register.js
 import React from 'react';
 import { Button, TextField, Typography, Container, Grid, Link } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
