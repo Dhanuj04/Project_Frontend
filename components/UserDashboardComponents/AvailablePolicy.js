@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,6 +9,13 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PolicyIcon from '@material-ui/icons/Policy';
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,13 +89,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserDashboard = () => {
+const AvailablePolicy = () => {
   const classes = useStyles();
+  const [policies, setPolicies] = useState([]);
 
   const handleLogout = () => {
     // Karthikey Logout logic needs to be written here
     console.log('Logout clicked');
-  };
+  }
+  useEffect(() => {
+    const fetchPolicies = async () => {
+      try {
+        const response = await fetch('http://localhost:8881/policies');
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data); // Add this line
+        setPolicies(data);
+      } catch (error) {
+        console.error('Error fetching policies:', error);
+      }
+    };
+
+    fetchPolicies();
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -161,9 +186,39 @@ const UserDashboard = () => {
         </div>
 
         <div className={classes.rightColumn}>
-              <Typography variant="h6" align="center">Here we should display all the available policies 
-              [ API /policies/loadPolicies]</Typography> 
-        </div>
+  <Typography variant="h6" align="center">
+    Available Policies
+  </Typography>
+  <TableContainer>
+    <Table aria-label="Available Policies Table">
+      <TableHead>
+        <TableRow>
+          <TableCell>ID</TableCell>
+          <TableCell>Name</TableCell>
+          <TableCell>Description</TableCell>
+          <TableCell>Premium</TableCell>
+          <TableCell>Coverage</TableCell>
+          <TableCell>Term</TableCell>
+          {/* Add more columns as needed */}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {policies.map((policy) => (
+          <TableRow key={policy.policy_id}>
+            <TableCell>{policy.policy_id}</TableCell>
+            <TableCell>{policy.policy_name}</TableCell>
+            <TableCell>{policy.policy_description}</TableCell>
+            <TableCell>{policy.standardPremium}</TableCell>
+            <TableCell>{policy.coveragePeriod}</TableCell>
+            <TableCell>{policy.term}</TableCell>
+            {/* Add more cells for additional columns */}
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </TableContainer>
+</div>
+
       </div>
 
       
@@ -175,4 +230,4 @@ const UserDashboard = () => {
   );
 };
 
-export default UserDashboard;
+export default AvailablePolicy;
