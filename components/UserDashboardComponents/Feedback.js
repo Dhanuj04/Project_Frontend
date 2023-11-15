@@ -9,6 +9,9 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PolicyIcon from '@material-ui/icons/Policy';
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -131,6 +134,13 @@ const UserDashboard = () => {
             </Typography>
           </Link>
 
+          <Link to="/policy-apply" className={classes.text}>
+            <Typography variant="h6" className={classes.text}>
+              <PolicyIcon className={classes.icon} />
+              Apply Policy
+            </Typography>
+          </Link>
+
           <Link to="/policy-applied" className={classes.text}>
             <Typography variant="h6" className={classes.text}>
               <PolicyIcon className={classes.icon} />
@@ -138,10 +148,10 @@ const UserDashboard = () => {
             </Typography>
           </Link>
 
-          <Link to="/policy-apply" className={classes.text}>
+          <Link to="/discounts" className={classes.text}>
             <Typography variant="h6" className={classes.text}>
               <PolicyIcon className={classes.icon} />
-              Apply Policy
+              Discounts
             </Typography>
           </Link>
 
@@ -154,8 +164,33 @@ const UserDashboard = () => {
         </div>
 
         <div className={classes.rightColumn}>
-              <Typography variant="h6" align="center">Here we should display Feedback
-              [ API]</Typography> 
+          <Card className={classes.welcomeCard}>
+            <CardMedia
+              className={classes.welcomeImage}
+              image="https://aryasamaj.com/wp-content/uploads/2021/04/namaste.png" 
+              title="Welcome Image"
+            />
+            <CardContent>
+              <Typography variant="h6" align="center">Welcome to Insurance Management</Typography>
+              <Typography variant="body2" align="center">
+              An Insurance Management System (IMS) is a sophisticated software solution designed to revolutionize 
+              and streamline the complex operations within the insurance industry. Serving as the backbone of insurance
+               companies, the IMS consolidates and automates key processes, ranging from policy creation and issuance 
+               to claims processing and customer management. This comprehensive system facilitates the seamless 
+               administration of insurance policies, allowing companies to efficiently assess risks, generate quotes, 
+               and manage premium calculations. With features like underwriting support and agent performance 
+               monitoring, the IMS empowers insurance providers to make informed decisions and enhance overall 
+               operational efficiency. Robust billing and premium management capabilities, coupled with secure 
+               document storage and compliance reporting, ensure financial accuracy, regulatory adherence, and 
+               data security. By integrating seamlessly with external systems and offering robust reporting and 
+               analytics tools, the IMS becomes a pivotal tool for insurance companies to adapt to evolving 
+               market demands, provide superior customer service, and maintain a competitive edge in the dynamic 
+               landscape of the insurance sector
+              </Typography>
+            </CardContent>
+          </Card>
+
+          
         </div>
       </div>
 

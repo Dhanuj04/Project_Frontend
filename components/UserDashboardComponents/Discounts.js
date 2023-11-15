@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,6 +9,12 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PolicyIcon from '@material-ui/icons/Policy';
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +31,12 @@ const useStyles = makeStyles((theme) => ({
   welcomeImage: {
     height: 150,
     backgroundSize: 'contain',
+  },
+  tableContainer: {
+    marginTop: theme.spacing(2),
+  },
+  table: {
+    minWidth: 650,
   },
   bottomAppBar: {
     top: 'auto',
@@ -58,8 +70,8 @@ const useStyles = makeStyles((theme) => ({
     flex: 5,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', 
-    justifyContent: 'center', 
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   icon: {
     fontSize: 40,
@@ -90,9 +102,77 @@ const UserDashboard = () => {
     console.log('Logout clicked');
   };
 
+  const Feedback = () => {
+    const classes = useStyles();
+    const [feedbackData, setFeedbackData] = useState([]);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      const fetchFeedbackData = async () => {
+        try {
+          const response = await fetch('http://localhost:8880/discounts/loadAll');
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          const data = await response.json();
+          setFeedbackData(data);
+        } catch (error) {
+          console.error('Error fetching feedback data:', error);
+          setError(error.message);
+        }
+      };
+      
+  
+      fetchFeedbackData();
+    }, []);
+  
+    if (error) {
+      return <p>Error: {error}</p>;
+    }
+  
+    return (
+      <div className={classes.rightColumn}>
+        <Typography variant="h6" align="center">Discounts</Typography>
+        <TableContainer className={classes.tableContainer}>
+          <Table className={classes.table} aria-label="Discounts Table">
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Policy ID</TableCell>
+                <TableCell>Code</TableCell>
+                <TableCell>Discount Percentage</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Action</TableCell> {/* New column for "Good" button */}
+                {/* Add more columns as needed */}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {feedbackData.map((discount) => (
+                <TableRow key={discount.id}>
+                  <TableCell>{discount.id}</TableCell>
+                  <TableCell>{discount.policyId}</TableCell>
+                  <TableCell>{discount.code}</TableCell>
+                  <TableCell>{discount.discountPercentage}</TableCell>
+                  <TableCell>{discount.description}</TableCell>
+                  <TableCell>
+                    <Button variant="contained" color="primary">
+                      Good
+                    </Button>
+                  </TableCell>
+                  {/* Add more cells for additional columns */}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    );
+  };
+  
+
   return (
     <div className={classes.root}>
-        <AppBar position="static" className={classes.appBar}>
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" color="inherit">
             Insurance Management
@@ -145,13 +225,6 @@ const UserDashboard = () => {
             </Typography>
           </Link>
 
-          <Link to="/discounts" className={classes.text}>
-            <Typography variant="h6" className={classes.text}>
-              <PolicyIcon className={classes.icon} />
-              Discounts
-            </Typography>
-          </Link>
-
           <Link to="/feedback" className={classes.text}>
             <Typography variant="h6" className={classes.text}>
               <FeedbackIcon className={classes.icon} />
@@ -159,14 +232,9 @@ const UserDashboard = () => {
             </Typography>
           </Link>
         </div>
-
-        <div className={classes.rightColumn}>
-              <Typography variant="h6" align="center">Here we should display all the available policies 
-              [ API]</Typography> 
-        </div>
+        <Feedback />
       </div>
 
-      
       <AppBar position="fixed" className={classes.bottomAppBar}>
         <Toolbar className={classes.toolbar}>
         </Toolbar>

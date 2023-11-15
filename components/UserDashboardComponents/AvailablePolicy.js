@@ -145,6 +145,13 @@ const UserDashboard = () => {
             </Typography>
           </Link>
 
+          <Link to="/discounts" className={classes.text}>
+            <Typography variant="h6" className={classes.text}>
+              <PolicyIcon className={classes.icon} />
+              Discounts
+            </Typography>
+          </Link>
+
           <Link to="/feedback" className={classes.text}>
             <Typography variant="h6" className={classes.text}>
               <FeedbackIcon className={classes.icon} />

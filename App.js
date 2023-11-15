@@ -10,6 +10,7 @@ import PolicyCategory from './components/UserDashboardComponents/PolicyCategory'
 import Feedback from './components/UserDashboardComponents/Feedback';
 import AppliedPolicy from './components/UserDashboardComponents/AppliedPolicy';
 import ApplyPolicy from './components/UserDashboardComponents/ApplyPolicy';
+import Discount from './components/UserDashboardComponents/Discounts'
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
         <Route path="/policy-applied" element={<AppliedPolicy />} />
         <Route path="/policy-apply" element={<ApplyPolicy />} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="/discounts" element={<Discount />} />
+
         </Routes>
       </div>
     </Router>

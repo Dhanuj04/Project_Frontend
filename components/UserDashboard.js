@@ -134,6 +134,13 @@ const UserDashboard = () => {
             </Typography>
           </Link>
 
+          <Link to="/policy-apply" className={classes.text}>
+            <Typography variant="h6" className={classes.text}>
+              <PolicyIcon className={classes.icon} />
+              Apply Policy
+            </Typography>
+          </Link>
+
           <Link to="/policy-applied" className={classes.text}>
             <Typography variant="h6" className={classes.text}>
               <PolicyIcon className={classes.icon} />
@@ -141,10 +148,10 @@ const UserDashboard = () => {
             </Typography>
           </Link>
 
-          <Link to="/policy-apply" className={classes.text}>
+          <Link to="/discounts" className={classes.text}>
             <Typography variant="h6" className={classes.text}>
               <PolicyIcon className={classes.icon} />
-              Apply Policy
+              Discounts
             </Typography>
           </Link>
 
