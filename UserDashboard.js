@@ -1,4 +1,3 @@
-// UserDashboard.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -27,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   welcomeImage: {
-    height: 150, // Adjust the height of the image as needed
+    height: 150,
     backgroundSize: 'contain',
   },
   bottomAppBar: {
@@ -62,8 +61,8 @@ const useStyles = makeStyles((theme) => ({
     flex: 5,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // Center align text horizontally
-    justifyContent: 'center', // Center align text vertically
+    alignItems: 'center', 
+    justifyContent: 'center', 
   },
   icon: {
     fontSize: 40,
@@ -72,10 +71,6 @@ const useStyles = makeStyles((theme) => ({
   logoutContainer: {
     display: 'flex',
     alignItems: 'center',
-  },
-  logoutButton: {
-    color: 'inherit',
-    textTransform: 'none', // Prevent text transformation in the button
   },
   text: {
     fontSize: 20,
@@ -94,7 +89,7 @@ const UserDashboard = () => {
   const classes = useStyles();
 
   const handleLogout = () => {
-    // Add your logout logic here
+    // Karthikey Logout logic needs to be written here
     console.log('Logout clicked');
   };
 
@@ -162,29 +157,39 @@ const UserDashboard = () => {
         </div>
 
         <div className={classes.rightColumn}>
-          {/* Welcome Card */}
           <Card className={classes.welcomeCard}>
             <CardMedia
               className={classes.welcomeImage}
-              image="https://aryasamaj.com/wp-content/uploads/2021/04/namaste.png" // Replace with the actual path to your image
+              image="https://aryasamaj.com/wp-content/uploads/2021/04/namaste.png" 
               title="Welcome Image"
             />
             <CardContent>
               <Typography variant="h6" align="center">Welcome to Insurance Management</Typography>
               <Typography variant="body2" align="center">
-              An Insurance Management System (IMS) is a sophisticated software solution designed to revolutionize and streamline the complex operations within the insurance industry. Serving as the backbone of insurance companies, the IMS consolidates and automates key processes, ranging from policy creation and issuance to claims processing and customer management. This comprehensive system facilitates the seamless administration of insurance policies, allowing companies to efficiently assess risks, generate quotes, and manage premium calculations. With features like underwriting support and agent performance monitoring, the IMS empowers insurance providers to make informed decisions and enhance overall operational efficiency. Robust billing and premium management capabilities, coupled with secure document storage and compliance reporting, ensure financial accuracy, regulatory adherence, and data security. By integrating seamlessly with external systems and offering robust reporting and analytics tools, the IMS becomes a pivotal tool for insurance companies to adapt to evolving market demands, provide superior customer service, and maintain a competitive edge in the dynamic landscape of the insurance sector
+              An Insurance Management System (IMS) is a sophisticated software solution designed to revolutionize 
+              and streamline the complex operations within the insurance industry. Serving as the backbone of insurance
+               companies, the IMS consolidates and automates key processes, ranging from policy creation and issuance 
+               to claims processing and customer management. This comprehensive system facilitates the seamless 
+               administration of insurance policies, allowing companies to efficiently assess risks, generate quotes, 
+               and manage premium calculations. With features like underwriting support and agent performance 
+               monitoring, the IMS empowers insurance providers to make informed decisions and enhance overall 
+               operational efficiency. Robust billing and premium management capabilities, coupled with secure 
+               document storage and compliance reporting, ensure financial accuracy, regulatory adherence, and 
+               data security. By integrating seamlessly with external systems and offering robust reporting and 
+               analytics tools, the IMS becomes a pivotal tool for insurance companies to adapt to evolving 
+               market demands, provide superior customer service, and maintain a competitive edge in the dynamic 
+               landscape of the insurance sector
               </Typography>
             </CardContent>
           </Card>
 
-          {/* ... (any additional content in the right column) */}
+          
         </div>
       </div>
 
-      {/* Bottom AppBar */}
+      
       <AppBar position="fixed" className={classes.bottomAppBar}>
         <Toolbar className={classes.toolbar}>
-          {/* Add content for the bottom bar if needed */}
         </Toolbar>
       </AppBar>
     </div>
