@@ -127,7 +127,7 @@ const UserDashboard = () => {
             </Typography>
           </Link>
 
-          <Link to="/register" className={classes.text}>
+          <Link to="/available-policies" className={classes.text}>
             <Typography variant="h6" className={classes.text}>
               <PolicyIcon className={classes.icon} />
               Available Policy
